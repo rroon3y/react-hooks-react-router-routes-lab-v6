@@ -53,3 +53,27 @@ test("renders a Directors <NavLink>", async () => {
 
   expect(a.classList).toContain("active");
 });
+test("renders a <nav> element", () => {
+  const nav = container.querySelector("nav");
+  expect(nav).toBeInTheDocument();
+});
+
+test("renders three NavLink elements", () => {
+  const links = container.querySelectorAll("a");
+  expect(links.length).toBe(3);
+});
+
+test('NavLink "Home" has correct "to" prop', () => {
+  const homeLink = screen.getByText("Home");
+  expect(homeLink.getAttribute("href")).toBe("/");
+});
+
+test('NavLink "Directors" has correct "to" prop', () => {
+  const directorsLink = screen.getByText("Directors");
+  expect(directorsLink.getAttribute("href")).toBe("/directors");
+});
+
+test('NavLink "Actors" has correct "to" prop', () => {
+  const actorsLink = screen.getByText("Actors");
+  expect(actorsLink.getAttribute("href")).toBe("/actors");
+});
